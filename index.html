@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dharohar — Handcrafted Clay &amp; Terracotta</title>
+<meta name="description" content="Dharohar: handcrafted clay diyas, terracotta and bamboo decor, and serveware.">
+<meta name="theme-color" content="#C85A32">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+<style>
+:root{--beige:#F5EFE8;--sand:#EADFD2;--paper:#FCFAF7;--terra:#C85A32;--terra-d:#A5441F;--char:#2B2826;--mute:rgba(43,40,38,.62);--line:rgba(43,40,38,.13);--shadow:0 10px 30px rgba(43,40,38,.14)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--beige);color:var(--char);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+body.lock{overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+input,select,textarea{font:inherit;color:inherit}
+img{max-width:100%;display:block}
+a{color:var(--terra-d)}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.muted{color:var(--mute);font-size:.88rem}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row.between{justify-content:space-between}
+.row.end{justify-content:flex-end}
+
+/* Splash: gone at exactly 0.7s (0.45s hold + 0.25s fade), pure CSS */
+#splash{position:fixed;inset:0;z-index:9999;background:var(--beige);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;animation:splashOut .25s ease .45s forwards}
+#splash .sl{font-family:Georgia,serif;letter-spacing:.34em;font-weight:700;font-size:1.5rem;color:var(--char);padding-left:.34em}
+@keyframes splashOut{to{opacity:0;visibility:hidden}}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(245,239,232,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:.3em;font-size:1.15rem;cursor:default;user-select:none;-webkit-user-select:none;touch-action:manipulation;padding:8px 0}
+.hdr-act{display:flex;gap:6px}
+.ibtn{position:relative;display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:999px;font-size:.88rem}
+.ibtn:hover{background:var(--sand)}
+.ibtn svg{width:22px;height:22px;stroke:var(--char);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.badge{position:absolute;top:0;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--terra);color:var(--paper);font-size:.7rem;font-weight:700;display:none;align-items:center;justify-content:center}
+.badge.on{display:flex}
+#banner{display:none;background:var(--char);color:var(--paper);text-align:center;font-size:.85rem;padding:8px 14px}
+#banner.on{display:block}
+
+/* Hero, search, tabs */
+.hero{padding:30px 16px 8px;text-align:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--terra-d);font-weight:600}
+.hero h1{font-family:Georgia,serif;font-size:clamp(1.7rem,5.5vw,2.7rem);line-height:1.2;margin:8px 0 10px;font-weight:600}
+.hero p{max-width:520px;margin:0 auto;color:var(--mute)}
+.search{position:relative;max-width:520px;margin:18px auto 0}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--mute);fill:none;stroke-width:2}
+.search input{width:100%;padding:13px 16px 13px 42px;border:1px solid var(--line);border-radius:999px;background:var(--paper);outline:none}
+.search input:focus,.inp:focus{border-color:var(--terra);box-shadow:0 0 0 3px rgba(200,90,50,.15)}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:18px 16px 6px;scrollbar-width:none;justify-content:flex-start}
+.cats::-webkit-scrollbar{display:none}
+@media(min-width:700px){.cats{justify-content:center}}
+.cat{flex:none;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:.9rem;white-space:nowrap}
+.cat.on{background:var(--char);border-color:var(--char);color:var(--paper)}
+
+/* Product grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 0 50px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.cimg{aspect-ratio:1/1;background:var(--sand);overflow:hidden}
+.cimg img{width:100%;height:100%;object-fit:cover}
+.card.oos .cimg{opacity:.55}
+.cb{padding:12px 14px 14px}
+.ccat{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-d)}
+.cb h3{font-family:Georgia,serif;font-size:1rem;font-weight:600;margin:3px 0 8px;line-height:1.3}
+.crow{display:flex;justify-content:space-between;align-items:center}
+.crow b{font-size:1.02rem}
+.add{width:34px;height:34px;border-radius:50%;background:var(--terra);color:var(--paper);font-size:1.3rem;line-height:1}
+.add:disabled{background:var(--sand);color:var(--mute);cursor:not-allowed}
+.empty{grid-column:1/-1;text-align:center;padding:50px 16px;color:var(--mute)}
+.empty .btn{margin-top:14px}
+.sk{background:linear-gradient(90deg,var(--sand),var(--paper),var(--sand));background-size:200% 100%;animation:sk 1.2s infinite;border-radius:16px;aspect-ratio:3/4}
+@keyframes sk{to{background-position:-200% 0}}
+footer{text-align:center;padding:26px 16px 40px;color:var(--mute);font-size:.82rem;border-top:1px solid var(--line)}
+
+/* Buttons, fields, chips */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--terra);color:var(--paper);padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;transition:background .15s}
+.btn:hover{background:var(--terra-d)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--char);border:1px solid var(--char)}
+.btn.ghost:hover{background:var(--sand)}
+.btn.dark{background:var(--char)}
+.btn.dark:hover{background:#000}
+.btn.block{width:100%}
+.btn.sm{padding:8px 14px;font-size:.82rem}
+.lnk{color:var(--terra-d);font-size:.8rem;text-decoration:underline}
+.inp{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--paper);outline:none}
+.inp.sm{padding:8px 10px;font-size:.85rem;width:auto;max-width:100%}
+textarea.inp{resize:vertical}
+.fld{display:block;margin-bottom:12px}
+.fld>span{display:block;font-size:.8rem;font-weight:600;margin-bottom:5px}
+.err{color:var(--terra-d);font-size:.87rem;font-weight:600;margin:6px 0 10px;min-height:1px}
+.sec{font-family:Georgia,serif;font-size:1.02rem;margin:18px 0 10px}
+.chip{display:inline-block;padding:3px 11px;border-radius:999px;font-size:.74rem;font-weight:600;background:var(--sand);color:var(--char);white-space:nowrap}
+.chip.ok,.chip.dark{background:var(--char);color:var(--paper)}
+.chip.warn{background:var(--terra-d);color:var(--paper)}
+.chip.line{background:transparent;border:1px solid var(--line)}
+
+/* Modals and drawers */
+.mback{position:fixed;inset:0;z-index:200;background:rgba(43,40,38,.5);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .2s}
+.mback.in{opacity:1}
+.msheet{background:var(--beige);width:100%;max-width:520px;max-height:92vh;border-radius:20px;display:flex;flex-direction:column;overflow:hidden;transform:translateY(16px);transition:transform .22s;box-shadow:var(--shadow)}
+.mback.in .msheet{transform:none}
+.mback.drawer{justify-content:flex-end;align-items:stretch;padding:0}
+.drawer .msheet{max-width:440px;max-height:none;height:100%;border-radius:0;transform:translateX(40px)}
+.mback.full{padding:0}
+.full .msheet{max-width:1100px;max-height:none;height:100%;border-radius:0}
+@media(max-width:640px){.mback{align-items:flex-end;padding:0}.msheet{border-radius:20px 20px 0 0;max-height:94vh}.mback.drawer,.mback.full{align-items:stretch}}
+.mh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line);flex:none}
+.mh h3{font-size:1.15rem;font-weight:600}
+.x{width:34px;height:34px;border-radius:50%;background:var(--sand);font-size:.95rem}
+.mb{flex:1;overflow-y:auto;padding:16px 18px;-webkit-overflow-scrolling:touch}
+.mf{flex:none;padding:14px 18px;border-top:1px solid var(--line);background:var(--paper);display:grid;gap:10px}
+
+/* Product modal */
+.pm-img{aspect-ratio:1/1;max-height:340px;width:100%;object-fit:cover;background:var(--sand)}
+.pm-price{font-size:1.4rem;font-weight:700;margin:6px 0}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:var(--paper)}
+.qty button{width:38px;height:38px;font-size:1.2rem}
+.qty span{min-width:32px;text-align:center;font-weight:600}
+.qty.sm button{width:30px;height:30px}
+.pm-act{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+
+/* Bag */
+.bl{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.bl img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none;background:var(--sand)}
+.bl-i{flex:1;display:grid;gap:3px;align-content:start}
+.bl-r{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+
+/* Checkout */
+.sum-l{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;padding:4px 0}
+.sum-t{display:flex;justify-content:space-between;font-weight:700;font-size:1.05rem;border-top:1px solid var(--line);margin-top:6px;padding-top:8px}
+.pay-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.po{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:10px 12px;cursor:pointer;display:flex;gap:8px;align-items:flex-start}
+.po input{margin-top:4px;accent-color:var(--terra)}
+.po small{display:block;color:var(--mute);font-size:.74rem}
+.po:has(input:checked){border-color:var(--terra);box-shadow:0 0 0 2px rgba(200,90,50,.18)}
+.upi{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;margin-bottom:10px}
+.upi.off{display:none}
+.qr{width:200px;height:200px;margin:8px auto;border-radius:10px;background:#fff;padding:6px}
+.upi-id{font-weight:700;letter-spacing:.02em;word-break:break-all}
+.upi .row{justify-content:center;margin:8px 0}
+.upi .note{font-size:.8rem;color:var(--mute);margin:6px 0 10px}
+.upi .fld{text-align:left;margin:10px 0 0}
+
+/* Tracker */
+.prog{position:relative;padding:8px 0}
+.bar{position:absolute;top:50%;left:14px;right:14px;height:4px;background:var(--sand);border-radius:4px;transform:translateY(-50%)}
+.bar i{display:block;height:100%;background:var(--terra);border-radius:4px;transition:width .5s}
+.dots{position:relative;display:flex;justify-content:space-between}
+.dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.76rem;font-weight:700;background:var(--paper);border:2px solid var(--sand);color:var(--mute);flex:none;position:relative;z-index:1}
+.dot.done{background:var(--terra);border-color:var(--terra);color:var(--paper)}
+.dot.cur{border-color:var(--terra);color:var(--terra-d);box-shadow:0 0 0 4px rgba(200,90,50,.18)}
+.dot.issue{background:var(--char);border-color:var(--char);color:var(--paper)}
+.tl{list-style:none;margin-top:12px}
+.tl li{display:flex;gap:12px;padding-bottom:14px;position:relative}
+.tl li:not(:last-child)::before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--sand)}
+.tl li.done:not(:last-child)::before{background:var(--terra)}
+.tl li.todo{opacity:.5}
+.tl li.issue{opacity:1}
+.tl b{display:block;font-size:.92rem}
+.tl small{color:var(--mute);font-size:.8rem}
+
+/* Orders */
+.lookup{display:flex;gap:8px;margin-bottom:14px}
+.oc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.oc-h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;margin-bottom:8px}
+.oc-h b{letter-spacing:.04em}
+.oc ul.items{list-style:none;font-size:.88rem;margin:8px 0}
+.oc ul.items li{display:flex;justify-content:space-between;gap:10px}
+.oc-cur{font-weight:600;margin:6px 0 2px;font-size:.92rem}
+.oc-cust{font-size:.88rem;margin:6px 0;word-break:break-word}
+.oc-act{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.utr{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--sand);padding:2px 8px;border-radius:6px;font-size:.85rem}
+
+/* Dashboard */
+.dtabs{display:flex;gap:6px;overflow-x:auto;padding:10px 18px;border-bottom:1px solid var(--line);flex:none}
+.dtabs button{padding:8px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.88rem;white-space:nowrap}
+.dtabs button.on{background:var(--char);color:var(--paper);border-color:var(--char)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-size:1.3rem;font-family:Georgia,serif}
+.stat span{font-size:.7rem;color:var(--mute)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.filters .cat{padding:6px 12px;font-size:.8rem}
+.pr{display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px}
+.pr img{width:56px;height:56px;border-radius:8px;object-fit:cover;flex:none;background:var(--sand)}
+.pr .pi{flex:1;min-width:0}
+.pr .pi b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pe-img{width:120px;height:120px;border-radius:12px;object-fit:cover;background:var(--sand)}
+.chk{display:flex;gap:8px;align-items:center;margin-bottom:12px;font-size:.92rem}
+.chk input{accent-color:var(--terra);width:18px;height:18px}
+.grid2{display:grid;gap:14px}
+@media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
+
+/* Toast */
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);background:var(--char);color:var(--paper);padding:11px 20px;border-radius:999px;font-size:.9rem;z-index:500;opacity:0;pointer-events:none;transition:all .25s;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.ok-ic{width:56px;height:56px;border-radius:50%;background:var(--terra);color:var(--paper);display:grid;place-items:center;font-size:1.7rem;margin:0 auto 10px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="splash" aria-hidden="true">
+  <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M10 38h44a22 18 0 0 1-44 0z" fill="#C85A32"/><ellipse cx="32" cy="38" rx="22" ry="4" fill="#A5441F"/><path d="M32 12c6 7 6 13 0 18-6-5-6-11 0-18z" fill="#C85A32"/></svg>
+  <div class="sl">DHAROHAR</div>
+</div>
+<script>setTimeout(function(){var s=document.getElementById('splash');if(s&&s.parentNode){s.parentNode.removeChild(s);}},700);</script>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <div id="logo" class="logo">DHAROHAR</div>
+    <div class="hdr-act">
+      <button class="ibtn" data-act="open-orders" aria-label="My orders">
+        <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><span>My Orders</span>
+      </button>
+      <button class="ibtn" data-act="open-bag" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="badge" class="badge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+<div id="banner" role="status"></div>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Handcrafted clay &amp; terracotta</p>
+    <h1>Light a little heritage<br>into your home</h1>
+    <p>Handcrafted clay diyas, terracotta pieces and bamboo decor for every festival and every day.</p>
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="search" type="search" placeholder="Search diyas, planters, bowls…" autocomplete="off" aria-label="Search products">
+    </div>
+  </section>
+  <nav class="cats" id="cats" aria-label="Categories">
+    <button class="cat on" data-act="cat" data-cat="All">All</button>
+    <button class="cat" data-act="cat" data-cat="Clay &amp; Terracotta">Clay &amp; Terracotta</button>
+    <button class="cat" data-act="cat" data-cat="Bamboo &amp; Decor">Bamboo &amp; Decor</button>
+    <button class="cat" data-act="cat" data-cat="Serveware">Serveware</button>
+  </nav>
+  <div class="wrap"><div class="grid" id="grid"></div></div>
+</main>
+<footer>© Dharohar · Handcrafted with care</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:20px;text-align:center">Please enable JavaScript to use Dharohar.</p></noscript>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+'use strict';
+
+/* ================= CONFIG ================= */
+// IMPORTANT: replace with your real project URL (Supabase > Project Settings > API), e.g. https://abcdxyz.supabase.co
+var CFG = {
+  URL: 'https://sotctetufunffzdmnpco.supabase.co',
+  KEY: 'sb_publishable_zI4koSviMmda7l1tCnWILQ_GEDZo0N5',
+  TABLE: 'dharohar_store',
+  ROW: 'main',
+  COL: 'data'          // jsonb column that holds the data
+};
+var POLL_MS = 5000;
+var PROD_CATS = ['Clay & Terracotta', 'Bamboo & Decor', 'Serveware'];
+var STEP_T = ['', 'Order Placed', 'Payment Received & Accepted', 'Order Confirmed & Preparing', 'Packed & Ready', 'Dispatched / Out for Delivery', 'Delivered'];
+var DEFAULT_UPI = { upiId: '8100303029@fam', payee: 'Sourav' };
+var SEED = [
+  { id: 's1', name: 'Handcrafted Clay Diyas (Set of 12)', price: 199, cat: 'Clay & Terracotta', desc: 'Classic hand-shaped clay diyas, sun-dried and kiln-fired. Perfect for festivals and everyday prayer.', img: '', inStock: true },
+  { id: 's2', name: 'Terracotta Hanging Lamp', price: 449, cat: 'Clay & Terracotta', desc: 'A hanging terracotta lamp with hand-carved detail that throws a warm, patterned glow.', img: '', inStock: true },
+  { id: 's3', name: 'Terracotta Planter Pot', price: 349, cat: 'Clay & Terracotta', desc: 'Breathable terracotta planter that keeps roots healthy and looks beautiful on any shelf.', img: '', inStock: true },
+  { id: 's4', name: 'Earthen Water Matka', price: 599, cat: 'Clay & Terracotta', desc: 'Traditional clay matka that keeps water naturally cool.', img: '', inStock: true },
+  { id: 's5', name: 'Bamboo Wall Hanging', price: 399, cat: 'Bamboo & Decor', desc: 'Lightweight bamboo wall decor with a calm, natural finish.', img: '', inStock: true },
+  { id: 's6', name: 'Woven Bamboo Basket', price: 299, cat: 'Bamboo & Decor', desc: 'Handwoven bamboo basket for storage, gifting or festival hampers.', img: '', inStock: true },
+  { id: 's7', name: 'Terracotta Serving Bowl Set', price: 549, cat: 'Serveware', desc: 'Set of earthy terracotta bowls for serving snacks, curries and desserts.', img: '', inStock: true },
+  { id: 's8', name: 'Kulhad Tea Cups (Set of 6)', price: 249, cat: 'Serveware', desc: 'Traditional clay kulhads that give chai its unmistakable earthy aroma.', img: '', inStock: true }
+];
+
+/* ================= HELPERS ================= */
+function $(s, r) { return (r || document).querySelector(s); }
+function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function inr(n) { return '₹' + Number(n || 0).toLocaleString('en-IN'); }
+function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+function now() { return Date.now(); }
+function clone(o) { return JSON.parse(JSON.stringify(o)); }
+function fmtDate(ts) { try { return new Date(ts).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch (e) { return ''; } }
+function rand(n) { var a = new Uint8Array(n); (window.crypto || {}).getRandomValues ? crypto.getRandomValues(a) : a.forEach(function (_, i) { a[i] = Math.floor(Math.random() * 256); }); return a; }
+function genId() { var cs = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789', b = rand(8), s = 'DH'; for (var i = 0; i < 8; i++) s += cs[b[i] % cs.length]; return s; }
+function uid(p) { return p + '_' + now().toString(36) + Math.random().toString(36).slice(2, 6); }
+var LS = {
+  get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } }
+};
+var toastT;
+function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('show'); }, 2800); }
+function setBanner(msg) { var b = $('#banner'); b.textContent = msg || ''; b.classList.toggle('on', !!msg); }
+function copyText(t) {
+  return new Promise(function (res) {
+    function fallback() { try { var ta = document.createElement('textarea'); ta.value = t; ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0'; document.body.appendChild(ta); ta.focus(); ta.select(); var ok = document.execCommand('copy'); ta.remove(); res(ok); } catch (e) { res(false); } }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(function () { res(true); }, fallback); else fallback();
+  });
+}
+async function hashPin(pin) {
+  if (!(window.crypto && crypto.subtle)) throw new Error('Secure (https) connection required');
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('dharohar::v1::' + pin));
+  return Array.prototype.map.call(new Uint8Array(buf), function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+}
+function placeholder(cat) {
+  var g;
+  if (cat === 'Bamboo & Decor') g = '<g fill="#2B2826" opacity=".85"><rect x="96" y="70" width="14" height="190" rx="6"/><rect x="153" y="55" width="14" height="205" rx="6"/><rect x="210" y="80" width="14" height="180" rx="6"/></g><g fill="#C85A32"><rect x="90" y="120" width="26" height="6" rx="3"/><rect x="147" y="150" width="26" height="6" rx="3"/><rect x="204" y="130" width="26" height="6" rx="3"/></g>';
+  else if (cat === 'Serveware') g = '<path d="M60 150h200a100 100 0 0 1-200 0z" fill="#C85A32"/><ellipse cx="160" cy="150" rx="100" ry="14" fill="#A5441F"/><ellipse cx="160" cy="150" rx="86" ry="9" fill="#F5EFE8"/>';
+  else g = '<path d="M70 185h180a90 70 0 0 1-180 0z" fill="#C85A32"/><ellipse cx="160" cy="185" rx="90" ry="14" fill="#A5441F"/><path d="M160 90c22 26 22 46 0 62-22-16-22-36 0-62z" fill="#FCFAF7"/><path d="M160 112c9 12 9 22 0 30-9-8-9-18 0-30z" fill="#C85A32"/>';
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"><rect width="320" height="320" fill="#EADFD2"/>' + g + '</svg>';
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+function imgSrc(p) { return (p && typeof p.img === 'string' && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(p.img)) ? p.img : placeholder(p && p.cat); }
+function compressImage(file) {
+  return new Promise(function (res, rej) {
+    if (!file || !/^image\//.test(file.type)) return rej(new Error('Please choose an image file'));
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () {
+      try {
+        var nw = img.naturalWidth || 320, nh = img.naturalHeight || 320;
+        var W = Math.min(320, nw), H = Math.max(1, Math.round(nh * (W / nw)));
+        var c = document.createElement('canvas'); c.width = W; c.height = H;
+        var x = c.getContext('2d'); x.fillStyle = '#FCFAF7'; x.fillRect(0, 0, W, H); x.drawImage(img, 0, 0, W, H);
+        var out = c.toDataURL('image/jpeg', 0.5); URL.revokeObjectURL(url); res(out);
+      } catch (e) { URL.revokeObjectURL(url); rej(e); }
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); rej(new Error('Could not read this image')); };
+    img.src = url;
+  });
+}
+
+/* ================= STATE ================= */
+var S = {
+  sb: null, store: null, storeSig: '', loadErr: '', fails: 0, syncing: false,
+  auth: null, cat: 'All', q: '', cart: {}, myIds: [], my: {}, expanded: {},
+  orders: [], ordSig: '', filter: 'all', oq: '', dashTab: 'orders',
+  pm: null, pmM: null, bagM: null, ordM: null, coM: null, dashM: null, busyIds: {}, editImg: ''
+};
+(function loadLocal() {
+  var c = LS.get('dh_cart', {}), out = {};
+  if (c && typeof c === 'object' && !Array.isArray(c)) Object.keys(c).forEach(function (k) { var q = parseInt(c[k], 10); if (q > 0) out[k] = Math.min(20, q); });
+  S.cart = out;
+  var ids = LS.get('dh_my', []);
+  S.myIds = Array.isArray(ids) ? ids.filter(function (x) { return /^DH[A-Z0-9]{8}$/.test(x); }).slice(0, 50) : [];
+})();
+
+/* ================= SUPABASE LAYER ================= */
+var cfgOk = /^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(CFG.URL) && !/your-project-ref/i.test(CFG.URL);
+var sb = null;
+if (cfgOk && window.supabase && window.supabase.createClient) {
+  try { sb = window.supabase.createClient(CFG.URL, CFG.KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } }); } catch (e) { sb = null; }
+}
+var T = CFG.TABLE, COL = CFG.COL;
+function oid(id) { return 'order_' + id; }
+function isDup(e) { return e && (e.code === '23505' || /duplicate/i.test(e.message || '')); }
+
+async function dbGetMain() {
+  var r = await sb.from(T).select('id,' + COL).eq('id', CFG.ROW).maybeSingle();
+  if (r.error) throw r.error;
+  return r.data ? r.data[COL] : null;
+}
+function normProduct(p) {
+  p = p || {};
+  var cat = PROD_CATS.indexOf(p.cat) > -1 ? p.cat : (PROD_CATS.indexOf(p.category) > -1 ? p.category : 'Clay & Terracotta');
+  var price = Number(p.price); if (!isFinite(price) || price < 0) price = 0;
+  return { id: String(p.id || uid('p')), name: String(p.name || 'Product'), price: price, cat: cat, desc: String(p.desc || p.description || ''), img: String(p.img || p.image || ''), inStock: p.inStock !== false };
+}
+async function normalizeMain(d) {
+  d = d && typeof d === 'object' ? d : {};
+  var st = d.settings && /@/.test(d.settings.upiId || '') ? d.settings : clone(DEFAULT_UPI);
+  return {
+    v: 1,
+    products: Array.isArray(d.products) && d.products.length ? d.products.map(normProduct) : clone(SEED),
+    settings: st,
+    adminHash: typeof d.adminHash === 'string' && d.adminHash ? d.adminHash : await hashPin('1234'),
+    staff: Array.isArray(d.staff) ? d.staff : []
+  };
+}
+async function ensureMain() {
+  var d = await dbGetMain();
+  if (d && d.v != null && d.adminHash) return d;
+  var seed = await normalizeMain(d), r;
+  if (!d) { r = await sb.from(T).insert((function () { var o = { id: CFG.ROW }; o[COL] = seed; return o; })()); if (r.error && !isDup(r.error)) throw r.error; }
+  else { var u = {}; u[COL] = seed; r = await sb.from(T).update(u).eq('id', CFG.ROW).is(COL + '->>v', null); if (r.error) throw r.error; }
+  d = await dbGetMain();
+  if (!d) throw new Error('Store unavailable');
+  return d;
+}
+function roleOf(store, hash) {
+  if (!store || !hash) return null;
+  if (store.adminHash === hash) return { role: 'admin', name: 'Admin' };
+  var s = (store.staff || []).filter(function (x) { return x.hash === hash; })[0];
+  return s ? { role: 'staff', name: s.name || 'Staff' } : null;
+}
+function authOk(store, need) {
+  var r = roleOf(store, S.auth && S.auth.hash);
+  if (!r) return false;
+  return need === 'admin' ? r.role === 'admin' : true;
+}
+// Read-modify-write on the main row with optimistic locking (data->>v)
+async function mutateMain(fn, role) {
+  for (var i = 0; i < 5; i++) {
+    var cur = await dbGetMain();
+    if (!cur) throw new Error('Store not initialised');
+    if (role && !authOk(cur, role)) { applyStore(cur); forceLogout(); throw new Error('Session expired. Please login again.'); }
+    var next = clone(cur), v = Number(cur.v) || 0;
+    fn(next);
+    next.v = v + 1;
+    var u = {}; u[COL] = next;
+    var q = sb.from(T).update(u).eq('id', CFG.ROW);
+    q = cur.v == null ? q.is(COL + '->>v', null) : q.eq(COL + '->>v', String(v));
+    var r = await q.select('id');
+    if (r.error) throw r.error;
+    if (r.data && r.data.length) { applyStore(next); return next; }
+    await sleep(150 + Math.random() * 250);
+  }
+  throw new Error('Could not save. Please try again.');
+}
+function rowToOrder(row) { var o = row[COL] || {}; o.id = String(row.id).replace(/^order_/, ''); return o; }
+async function dbGetOrder(id) {
+  var r = await sb.from(T).select('id,' + COL).eq('id', oid(id)).maybeSingle();
+  if (r.error) throw r.error;
+  return r.data ? rowToOrder(r.data) : null;
+}
+async function dbAllOrders() {
+  var r = await sb.from(T).select('id,' + COL).like('id', 'order_%');
+  if (r.error) throw r.error;
+  return (r.data || []).map(rowToOrder);
+}
+async function dbOrdersByIds(ids) {
+  var r = await sb.from(T).select('id,' + COL).in('id', ids.map(oid));
+  if (r.error) throw r.error;
+  return (r.data || []).map(rowToOrder);
+}
+async function updateOrder(id, fn) {
+  for (var i = 0; i < 5; i++) {
+    var main = await dbGetMain();
+    if (!main || !authOk(main, 'staff')) { forceLogout(); throw new Error('Session expired. Please login again.'); }
+    var cur = await dbGetOrder(id);
+    if (!cur) throw new Error('Order not found');
+    var next = clone(cur), u0 = Number(cur.u) || 0;
+    fn(next);
+    next.u = u0 + 1; next.updatedAt = now();
+    var up = {}; up[COL] = next;
+    var r = await sb.from(T).update(up).eq('id', oid(id)).eq(COL + '->>u', String(u0)).select('id');
+    if (r.error) throw r.error;
+    if (r.data && r.data.length) return next;
+    await sleep(150 + Math.random() * 250);
+  }
+  throw new Error('Could not update. Please try again.');
+}
+function addLog(o, text) { o.log = (o.log || []).concat([{ t: now(), s: text, by: S.auth ? S.auth.name : '' }]).slice(-20); }
+
+/* ================= CART & PRICING ================= */
+function prods() { return S.store && Array.isArray(S.store.products) ? S.store.products : []; }
+function getP(id) { return prods().filter(function (p) { return p.id === id; })[0] || null; }
+function priceOf(p) { var n = Number(p && p.price); return isFinite(n) && n >= 0 ? n : 0; }
+function saveCart() { LS.set('dh_cart', S.cart); }
+function cartCount() { return Object.keys(S.cart).reduce(function (a, k) { return a + S.cart[k]; }, 0); }
+function cartLines() {
+  var L = [];
+  Object.keys(S.cart).forEach(function (id) { var p = getP(id); if (p) L.push({ p: p, qty: S.cart[id] }); });
+  return L;
+}
+function cartTotal() { return cartLines().reduce(function (a, l) { return a + priceOf(l.p) * l.qty; }, 0); }
+function pruneCart() {
+  if (!S.store) return;
+  var ch = false;
+  Object.keys(S.cart).forEach(function (id) { if (!getP(id)) { delete S.cart[id]; ch = true; } });
+  if (ch) saveCart();
+}
+function addCart(id, q) {
+  var p = getP(id);
+  if (!p || p.inStock === false) throw new Error('This item is currently unavailable');
+  S.cart[id] = Math.min(20, (S.cart[id] || 0) + q);
+  saveCart(); updateBadge(); renderBag();
+}
+function updateBadge() { var n = cartCount(), b = $('#badge'); b.textContent = n; b.classList.toggle('on', n > 0); }
+
+/* ================= ORDER HELPERS ================= */
+function stepOf(o) { return Math.min(6, Math.max(1, parseInt(o && o.step, 10) || 1)); }
+function normPhone(s) { var d = String(s || '').replace(/\D/g, ''); if (d.length === 12 && d.indexOf('91') === 0) d = d.slice(2); if (d.length === 11 && d[0] === '0') d = d.slice(1); return d; }
+function stepTitle(o) { return o.payStatus === 'hold' ? 'Payment On Hold / Issue' : STEP_T[stepOf(o)]; }
+function payChip(o) {
+  if (o.method === 'cod') return o.payStatus === 'cod_paid' ? ['Paid on delivery', 'ok'] : ['Cash on Delivery', ''];
+  if (o.payStatus === 'verified') return ['Payment verified ✓', 'ok'];
+  if (o.payStatus === 'hold') return ['Payment on hold', 'warn'];
+  return ['Verification pending', 'line'];
+}
+function stepInfo(o, i) {
+  var upi = o.method === 'upi', st = stepOf(o), t = STEP_T[i], s = '';
+  if (i === 1) s = (upi && o.payStatus === 'pending') ? 'Payment verification pending' : 'We have received your order';
+  else if (i === 2) {
+    if (o.payStatus === 'hold') { t = 'Payment On Hold / Issue'; s = o.note || 'There is an issue with your payment. Our team will contact you.'; }
+    else { if (!upi) t = 'Order Accepted'; s = i <= st ? (upi ? 'Your payment has been verified' : 'Your order has been accepted') : (upi ? 'Waiting for payment verification' : 'Waiting for acceptance'); }
+  }
+  else if (i === 3) s = 'Your items are being prepared';
+  else if (i === 4) s = 'Packed and ready to ship';
+  else if (i === 5) s = 'On the way to you';
+  else s = 'Delivered. Thank you!';
+  return { t: t, s: s };
+}
+function progressHTML(o) {
+  var st = stepOf(o), hold = o.payStatus === 'hold', dots = '';
+  for (var i = 1; i <= 6; i++) {
+    var cls = i < st ? 'done' : (i === st ? 'cur' : ''), issue = hold && i === 2;
+    dots += '<span class="dot ' + cls + (issue ? ' issue' : '') + '">' + (issue ? '!' : (i < st ? '✓' : i)) + '</span>';
+  }
+  return '<div class="prog"><div class="bar"><i style="width:' + ((st - 1) / 5 * 100) + '%"></i></div><div class="dots">' + dots + '</div></div>';
+}
+function timelineHTML(o) {
+  var st = stepOf(o), hold = o.payStatus === 'hold', h = '<ol class="tl">';
+  for (var i = 1; i <= 6; i++) {
+    var inf = stepInfo(o, i), done = i < st, cur = i === st, issue = hold && i === 2;
+    h += '<li class="' + (done ? 'done' : cur ? 'cur' : 'todo') + (issue ? ' issue' : '') + '"><span class="dot ' + (done ? 'done' : cur ? 'cur' : '') + (issue ? ' issue' : '') + '">' + (issue ? '!' : (done ? '✓' : i)) + '</span><div><b>' + esc(inf.t) + '</b><small>' + esc(inf.s) + '</small></div></li>';
+  }
+  return h + '</ol>';
+}
+
+/* ================= PLACE ORDER ================= */
+async function placeOrder(f) {
+  var main = await dbGetMain();
+  if (!main) throw new Error('Store is not available right now');
+  var items = [], total = 0;
+  Object.keys(S.cart).forEach(function (pid) {
+    var p = (main.products || []).filter(function (x) { return x.id === pid; })[0];
+    if (!p) return;
+    if (p.inStock === false) throw new Error(p.name + ' is out of stock. Please remove it from your bag.');
+    var qty = Math.min(20, Math.max(1, parseInt(S.cart[pid], 10) || 1)), price = Number(p.price) || 0;
+    items.push({ pid: p.id, name: p.name, price: price, qty: qty }); total += price * qty;
+  });
+  if (!items.length) throw new Error('Your bag is empty');
+  if (Math.abs(total - f.expected) > 0.001) { applyStore(main); throw new Error('Prices were updated by the store. Please review your new total and place the order again.'); }
+  if (f.method === 'upi') {
+    var d = await sb.from(T).select('id').eq(COL + '->>utr', f.utr).limit(1);
+    if (d.error) throw d.error;
+    if (d.data && d.data.length) throw new Error('This UTR has already been used on another order.');
+  }
+  for (var i = 0; i < 4; i++) {
+    var id = genId(), t = now();
+    var order = { id: id, items: items, total: total, method: f.method, utr: f.method === 'upi' ? f.utr : '', name: f.name, phone: f.phone, address: f.address, payStatus: f.method === 'upi' ? 'pending' : 'cod', step: 1, note: '', createdAt: t, updatedAt: t, u: 0, log: [{ t: t, s: 'Order placed', by: 'customer' }] };
+    var row = { id: oid(id) }; row[COL] = order;
+    var r = await sb.from(T).insert(row);
+    if (!r.error) return order;
+    if (!isDup(r.error)) throw r.error;
+  }
+  throw new Error('Could not create your order. Please try again.');
+}
+
+/* ================= MODAL SYSTEM ================= */
+var lockN = 0, stack = [];
+function lock() { lockN++; document.body.classList.add('lock'); }
+function unlock() { lockN = Math.max(0, lockN - 1); if (!lockN) document.body.classList.remove('lock'); }
+function openModal(html, cls, opts) {
+  opts = opts || {};
+  var back = document.createElement('div'); back.className = 'mback ' + (cls || '');
+  var sheet = document.createElement('div'); sheet.className = 'msheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true'); sheet.innerHTML = html;
+  back.appendChild(sheet); document.body.appendChild(back);
+  var m = {
+    el: back, sheet: sheet, sticky: !!opts.sticky, closed: false, onClose: opts.onClose || null,
+    close: function () {
+      if (m.closed) return; m.closed = true;
+      var i = stack.indexOf(m); if (i > -1) stack.splice(i, 1);
+      back.classList.remove('in'); unlock(); setTimeout(function () { back.remove(); }, 230);
+      if (m.onClose) m.onClose();
+    }
+  };
+  back._m = m;
+  back.addEventListener('click', function (e) { if (e.target === back && !m.sticky) m.close(); });
+  stack.push(m); lock();
+  requestAnimationFrame(function () { requestAnimationFrame(function () { back.classList.add('in'); }); });
+  return m;
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && stack.length) { var m = stack[stack.length - 1]; if (!m.sticky) m.close(); }
+});
+function dialog(o) {
+  return new Promise(function (res) {
+    var html = '<div class="mh"><h3 class="serif">' + esc(o.title) + '</h3></div><div class="mb"><p class="muted">' + esc(o.msg || '') + '</p>' +
+      (o.input ? '<input class="inp" id="dlgIn" maxlength="140" placeholder="' + esc(o.placeholder || '') + '" style="margin-top:12px">' : '') +
+      '<div class="row end" style="margin-top:16px"><button class="btn ghost" data-dlg="0">Cancel</button><button class="btn ' + (o.danger ? 'dark' : '') + '" data-dlg="1">' + esc(o.ok || 'OK') + '</button></div></div>';
+    var m = openModal(html, '', { sticky: true }), done = false;
+    function fin(v) { if (done) return; done = true; m.close(); res(v); }
+    m.sheet.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-dlg]'); if (!b) return;
+      if (b.dataset.dlg === '1') fin(o.input ? $('#dlgIn', m.sheet).value.trim() : true); else fin(null);
+    });
+    var inp = $('#dlgIn', m.sheet); if (inp) setTimeout(function () { inp.focus(); }, 80);
+  });
+}
+
+/* ================= EVENT DELEGATION ================= */
+var A = {}, F = {}, C = {}, I = {};
+function safe(fn, a, b) {
+  try { var r = fn(a, b); if (r && r.catch) r.catch(function (e) { toast((e && e.message) || 'Something went wrong'); }); }
+  catch (e) { toast((e && e.message) || 'Something went wrong'); }
+}
+document.addEventListener('click', function (e) {
+  var el = e.target.closest('[data-act]'); if (!el || el.disabled) return;
+  var fn = A[el.dataset.act]; if (fn) safe(fn, el, e);
+});
+document.addEventListener('submit', function (e) {
+  var f = e.target.closest('[data-form]'); if (!f) return;
+  e.preventDefault(); var fn = F[f.dataset.form]; if (fn) safe(fn, f, e);
+});
+document.addEventListener('change', function (e) {
+  var el = e.target.closest('[data-change]'); if (!el) return;
+  var fn = C[el.dataset.change]; if (fn) safe(fn, el, e);
+});
+document.addEventListener('input', function (e) {
+  var el = e.target.closest('[data-input]'); if (!el) return;
+  var fn = I[el.dataset.input]; if (fn) safe(fn, el, e);
+});
+A.close = function (el) { var b = el.closest('.mback'); if (b && b._m) b._m.close(); };
+A.copy = function (el) { copyText(el.dataset.copy || '').then(function (ok) { toast(ok ? 'Copied' : 'Copy failed. Please copy manually.'); }); };
+I.digits = function (el) { var v = el.value.replace(/\D/g, ''); if (v !== el.value) el.value = v; };
+
+/* ================= STOREFRONT ================= */
+function cardHTML(p) {
+  var oos = p.inStock === false;
+  return '<article class="card ' + (oos ? 'oos' : '') + '" data-act="open-product" data-id="' + esc(p.id) + '" tabindex="0">' +
+    '<div class="cimg"><img loading="lazy" src="' + imgSrc(p) + '" alt="' + esc(p.name) + '"></div>' +
+    '<div class="cb"><span class="ccat">' + esc(p.cat) + '</span><h3>' + esc(p.name) + '</h3>' +
+    '<div class="crow"><b>' + inr(priceOf(p)) + '</b>' +
+    (oos ? '<span class="chip line">Sold out</span>' : '<button class="add" data-act="quick-add" data-id="' + esc(p.id) + '" aria-label="Add to bag">+</button>') +
+    '</div></div></article>';
+}
+function renderGrid() {
+  var g = $('#grid');
+  if (!S.store) {
+    if (S.loadErr) g.innerHTML = '<div class="empty"><p>' + esc(S.loadErr) + '</p><button class="btn" data-act="retry">Try again</button></div>';
+    else g.innerHTML = '<div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>';
+    return;
+  }
+  var q = S.q.trim().toLowerCase();
+  var list = prods().filter(function (p) { return (S.cat === 'All' || p.cat === S.cat) && (!q || (p.name + ' ' + p.desc + ' ' + p.cat).toLowerCase().indexOf(q) > -1); });
+  g.innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="empty">No products found</div>';
+}
+A.cat = function (el) {
+  S.cat = el.dataset.cat;
+  $$('#cats .cat').forEach(function (b) { b.classList.toggle('on', b.dataset.cat === S.cat); });
+  renderGrid();
+};
+A.retry = function () { S.loadErr = ''; renderGrid(); sync(); };
+A['quick-add'] = function (el) { addCart(el.dataset.id, 1); toast('Added to bag'); };
+document.addEventListener('keydown', function (e) {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('card')) { e.preventDefault(); A['open-product'](e.target); }
+});
+
+/* Product modal */
+function pmHTML() {
+  var p = getP(S.pm.id); if (!p) return '';
+  var oos = p.inStock === false;
+  return '<div class="mh"><h3 class="serif">' + esc(p.name) + '</h3><button class="x" data-act="close" aria-label="Close">✕</button></div>' +
+    '<div class="mb" style="padding:0"><img class="pm-img" src="' + imgSrc(p) + '" alt="' + esc(p.name) + '"><div style="padding:16px 18px">' +
+    '<span class="ccat">' + esc(p.cat) + '</span><div class="pm-price">' + inr(priceOf(p)) + '</div>' +
+    '<p class="muted" style="white-space:pre-line">' + esc(p.desc) + '</p>' +
+    (oos ? '<p class="err" style="margin-top:14px">Currently unavailable</p>' :
+      '<div class="row between" style="margin-top:16px"><span style="font-weight:600">Quantity</span><div class="qty"><button data-act="pm-dec" aria-label="Decrease">−</button><span id="pmQty">' + S.pm.qty + '</span><button data-act="pm-inc" aria-label="Increase">+</button></div></div>' +
+      '<div class="pm-act"><button class="btn ghost" data-act="pm-add">Add to Bag</button><button class="btn" data-act="pm-buy">Buy Now</button></div>') +
+    '</div></div>';
+}
+A['open-product'] = function (el) {
+  if (!getP(el.dataset.id)) return;
+  S.pm = { id: el.dataset.id, qty: 1 };
+  if (S.pmM && !S.pmM.closed) S.pmM.close();
+  S.pmM = openModal(pmHTML(), '', { onClose: function () { S.pm = null; } });
+};
+function refreshPM() {
+  if (!S.pm || !S.pmM || S.pmM.closed) return;
+  if (!getP(S.pm.id)) { S.pmM.close(); toast('This product is no longer available'); return; }
+  S.pmM.sheet.innerHTML = pmHTML();
+}
+A['pm-dec'] = function () { S.pm.qty = Math.max(1, S.pm.qty - 1); $('#pmQty').textContent = S.pm.qty; };
+A['pm-inc'] = function () { S.pm.qty = Math.min(20, S.pm.qty + 1); $('#pmQty').textContent = S.pm.qty; };
+A['pm-add'] = function () { addCart(S.pm.id, S.pm.qty); toast('Added to bag'); S.pmM.close(); };
+A['pm-buy'] = function () { addCart(S.pm.id, S.pm.qty); S.pmM.close(); A.checkout(); };
+
+/* Bag drawer */
+function bagHTML() {
+  var L = cartLines(), total = cartTotal();
+  var body = L.length ? L.map(function (l) {
+    var p = l.p, id = esc(p.id);
+    return '<div class="bl"><img src="' + imgSrc(p) + '" alt=""><div class="bl-i"><b>' + esc(p.name) + '</b><span class="muted">' + inr(priceOf(p)) + (p.inStock === false ? ' · Sold out' : '') + '</span>' +
+      '<div class="qty sm"><button data-act="cart-dec" data-id="' + id + '" aria-label="Decrease">−</button><span>' + l.qty + '</span><button data-act="cart-inc" data-id="' + id + '" aria-label="Increase">+</button></div></div>' +
+      '<div class="bl-r"><b>' + inr(priceOf(p) * l.qty) + '</b><button class="lnk" data-act="cart-del" data-id="' + id + '">Remove</button></div></div>';
+  }).join('') : '<div class="empty" style="padding:60px 10px">Your bag is empty</div>';
+  return '<div class="mh"><h3 class="serif">Shopping Bag</h3><button class="x" data-act="close" aria-label="Close">✕</button></div><div class="mb">' + body + '</div>' +
+    (L.length ? '<div class="mf"><div class="row between"><span>Subtotal</span><b>' + inr(total) + '</b></div><button class="btn block" data-act="checkout">Checkout</button></div>' : '');
+}
+function renderBag() { if (S.bagM && !S.bagM.closed) S.bagM.sheet.innerHTML = bagHTML(); }
+A['open-bag'] = function () { if (S.bagM && !S.bagM.closed) return; S.bagM = openModal(bagHTML(), 'drawer'); };
+A['cart-inc'] = function (el) { var id = el.dataset.id; S.cart[id] = Math.min(20, (S.cart[id] || 0) + 1); saveCart(); updateBadge(); renderBag(); };
+A['cart-dec'] = function (el) { var id = el.dataset.id; S.cart[id] = (S.cart[id] || 1) - 1; if (S.cart[id] < 1) delete S.cart[id]; saveCart(); updateBadge(); renderBag(); };
+A['cart-del'] = function (el) { delete S.cart[el.dataset.id]; saveCart(); updateBadge(); renderBag(); };
+
+/* ================= CHECKOUT ================= */
+function upiLink(total) { var s = S.store.settings || DEFAULT_UPI; return 'upi://pay?pa=' + s.upiId + '&pn=' + encodeURIComponent(s.payee || 'Dharohar') + '&am=' + total.toFixed(2) + '&cu=INR&tn=' + encodeURIComponent('Dharohar order'); }
+function qrURL(link) { return 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=4&data=' + encodeURIComponent(link); }
+function coSummary() {
+  var L = cartLines(), t = cartTotal();
+  return L.map(function (l) { return '<div class="sum-l"><span>' + esc(l.p.name) + ' × ' + l.qty + '</span><span>' + inr(priceOf(l.p) * l.qty) + '</span></div>'; }).join('') + '<div class="sum-t"><span>Total</span><span>' + inr(t) + '</span></div>';
+}
+function checkoutHTML() {
+  var c = LS.get('dh_cust', {}) || {}, s = S.store.settings || DEFAULT_UPI, t = cartTotal();
+  return '<div class="mh"><h3 class="serif">Checkout</h3><button class="x" data-act="close" aria-label="Close">✕</button></div>' +
+    '<form class="mb" data-form="checkout" data-change="coform" novalidate>' +
+    '<div id="coSum">' + coSummary() + '</div>' +
+    '<h4 class="sec">Your details</h4>' +
+    '<label class="fld"><span>Full name</span><input class="inp" name="name" autocomplete="name" maxlength="60" value="' + esc(c.name || '') + '"></label>' +
+    '<label class="fld"><span>Phone number</span><input class="inp" name="phone" inputmode="numeric" autocomplete="tel" maxlength="14" value="' + esc(c.phone || '') + '"></label>' +
+    '<label class="fld"><span>Full address (house, area, city, PIN)</span><textarea class="inp" name="address" rows="3" maxlength="300">' + esc(c.address || '') + '</textarea></label>' +
+    '<h4 class="sec">Payment</h4>' +
+    '<div class="pay-opts"><label class="po"><input type="radio" name="method" value="upi" checked><span>UPI<small>Pay now &amp; enter UTR</small></span></label>' +
+    '<label class="po"><input type="radio" name="method" value="cod"><span>Cash on Delivery<small>Pay when delivered</small></span></label></div>' +
+    '<div class="upi" id="upiBox"><div class="muted">Scan &amp; pay <b id="upiAmt">' + inr(t) + '</b> to ' + esc(s.payee || '') + '</div>' +
+    '<img class="qr" id="qrImg" width="200" height="200" alt="UPI QR code" src="' + qrURL(upiLink(t)) + '">' +
+    '<div class="upi-id" id="upiIdTxt">' + esc(s.upiId) + '</div>' +
+    '<div class="row"><button type="button" class="btn ghost sm" data-act="copy" data-copy="' + esc(s.upiId) + '">Copy UPI ID</button><a class="btn sm" id="upiApp" href="' + esc(upiLink(t)) + '">Open UPI app</a></div>' +
+    '<p class="note">After paying, enter the 12-digit UTR / Transaction ID below. Your payment shows as verified only after our team checks it.</p>' +
+    '<label class="fld"><span>UTR / Transaction ID (12 digits)</span><input class="inp" name="utr" inputmode="numeric" maxlength="12" data-input="digits" placeholder="123456789012" autocomplete="off"></label></div>' +
+    '<p class="err" id="coErr" role="alert"></p>' +
+    '<button class="btn block" id="coBtn" type="submit">Place Order</button></form>';
+}
+A.checkout = function () {
+  if (!S.store) throw new Error('Store is still loading');
+  var L = cartLines();
+  if (!L.length) throw new Error('Your bag is empty');
+  var bad = L.filter(function (l) { return l.p.inStock === false; })[0];
+  if (bad) throw new Error(bad.p.name + ' is sold out. Please remove it.');
+  if (S.bagM && !S.bagM.closed) S.bagM.close();
+  if (S.coM && !S.coM.closed) S.coM.close();
+  S.coM = openModal(checkoutHTML());
+};
+function refreshCheckout() {
+  if (!S.coM || S.coM.closed) return;
+  if (!cartLines().length) { S.coM.close(); return; }
+  var t = cartTotal(), s = S.store.settings || DEFAULT_UPI, sh = S.coM.sheet;
+  $('#coSum', sh).innerHTML = coSummary();
+  $('#upiAmt', sh).textContent = inr(t);
+  $('#qrImg', sh).src = qrURL(upiLink(t));
+  $('#upiApp', sh).href = upiLink(t);
+  $('#upiIdTxt', sh).textContent = s.upiId;
+}
+C.coform = function (el, e) { var t = e.target; if (t && t.name === 'method') { $('#upiBox').classList.toggle('off', t.value !== 'upi'); } };
+F.checkout = async function (form) {
+  var err = $('#coErr'), btn = $('#coBtn'); err.textContent = '';
+  var fd = new FormData(form), name = String(fd.get('name') || '').trim().replace(/\s+/g, ' '),
+    phone = normPhone(fd.get('phone')), address = String(fd.get('address') || '').trim(),
+    method = fd.get('method') === 'cod' ? 'cod' : 'upi', utr = String(fd.get('utr') || '').replace(/\s/g, '');
+  if (name.length < 2) { err.textContent = 'Please enter your full name.'; return; }
+  if (!/^[6-9]\d{9}$/.test(phone)) { err.textContent = 'Please enter a valid 10-digit mobile number.'; return; }
+  if (address.length < 10) { err.textContent = 'Please enter your full address.'; return; }
+  if (method === 'upi' && !/^\d{12}$/.test(utr)) { err.textContent = 'Enter the 12-digit UTR / Transaction ID after paying.'; return; }
+  btn.disabled = true; btn.textContent = 'Placing order…';
+  try {
+    var o = await placeOrder({ name: name, phone: phone, address: address, method: method, utr: utr, expected: cartTotal() });
+    LS.set('dh_cust', { name: name, phone: phone, address: address });
+    S.cart = {}; saveCart(); updateBadge();
+    S.myIds = [o.id].concat(S.myIds.filter(function (x) { return x !== o.id; })).slice(0, 50); LS.set('dh_my', S.myIds); S.my[o.id] = o;
+    if (S.coM) S.coM.close();
+    showSuccess(o);
+  } catch (ex) {
+    err.textContent = (ex && ex.message) || 'Could not place order.';
+    refreshCheckout();
+    btn.disabled = false; btn.textContent = 'Place Order';
+  }
+};
+function showSuccess(o) {
+  openModal('<div class="mb" style="text-align:center;padding:28px 20px"><div class="ok-ic">✓</div><h3 class="serif" style="font-size:1.3rem">Order placed!</h3>' +
+    '<p class="muted" style="margin:6px 0 12px">Your Order ID</p><div class="utr" style="font-size:1.15rem;display:inline-block">' + esc(o.id) + '</div>' +
+    '<p class="muted" style="margin:14px 0">' + (o.method === 'upi' ? 'We will check your UTR and confirm your payment. You can track every step in My Orders.' : 'You will pay in cash on delivery. Track every step in My Orders.') + '</p>' +
+    '<div class="row" style="justify-content:center"><button class="btn ghost" data-act="copy" data-copy="' + esc(o.id) + '">Copy ID</button><button class="btn" data-act="track-new" data-id="' + esc(o.id) + '">Track order</button></div></div>');
+}
+A['track-new'] = function (el) { S.expanded[el.dataset.id] = true; A.close(el); A['open-orders'](); };
+
+/* ================= MY ORDERS (CUSTOMER) ================= */
+function myCardHTML(id) {
+  var o = S.my[id];
+  if (o === undefined) return '<div class="oc"><b>' + esc(id) + '</b><p class="muted">Loading…</p></div>';
+  if (o === null) return '<div class="oc"><b>' + esc(id) + '</b><p class="muted">This order could not be found.</p><button class="lnk" data-act="my-forget" data-id="' + esc(id) + '">Remove from list</button></div>';
+  var pc = payChip(o), open = !!S.expanded[id];
+  return '<div class="oc"><div class="oc-h"><div><b>' + esc(o.id) + '</b><div class="muted">' + fmtDate(o.createdAt) + ' · ' + inr(o.total) + '</div></div><span class="chip ' + pc[1] + '">' + esc(pc[0]) + '</span></div>' +
+    '<ul class="items">' + (o.items || []).map(function (i) { return '<li><span>' + esc(i.name) + ' × ' + esc(i.qty) + '</span></li>'; }).join('') + '</ul>' +
+    progressHTML(o) + '<div class="oc-cur">' + esc(stepTitle(o)) + '</div>' +
+    (open ? timelineHTML(o) : '') +
+    '<button class="lnk" data-act="my-toggle" data-id="' + esc(id) + '">' + (open ? 'Hide details' : 'View all 6 steps') + '</button></div>';
+}
+function myListHTML() { return S.myIds.length ? S.myIds.map(myCardHTML).join('') : '<div class="empty" style="padding:40px 10px">No orders yet. Enter your Order ID or phone number above to track an order.</div>'; }
+function renderMyList() { if (S.ordM && !S.ordM.closed) { var l = $('#myList', S.ordM.sheet); if (l) l.innerHTML = myListHTML(); } }
+A['open-orders'] = function () {
+  if (S.ordM && !S.ordM.closed) return;
+  S.ordM = openModal('<div class="mh"><h3 class="serif">My Orders</h3><button class="x" data-act="close" aria-label="Close">✕</button></div><div class="mb">' +
+    '<form class="lookup" data-form="lookup"><input class="inp" id="lkInput" placeholder="Order ID or 10-digit phone" maxlength="20" autocomplete="off"><button class="btn" type="submit">Track</button></form>' +
+    '<div id="myList">' + myListHTML() + '</div></div>', 'drawer');
+  syncMy().catch(function () { });
+};
+A['my-toggle'] = function (el) { S.expanded[el.dataset.id] = !S.expanded[el.dataset.id]; renderMyList(); };
+A['my-forget'] = function (el) { S.myIds = S.myIds.filter(function (x) { return x !== el.dataset.id; }); delete S.my[el.dataset.id]; LS.set('dh_my', S.myIds); renderMyList(); };
+F.lookup = async function () {
+  if (!sb) throw new Error('Store is not connected');
+  var v = $('#lkInput').value.trim().toUpperCase().replace(/\s/g, ''), found = [];
+  if (/^DH[A-Z0-9]{8}$/.test(v)) { var o = await dbGetOrder(v); if (o) found = [o]; }
+  else if (/^\d{10,12}$/.test(normPhone(v))) {
+    var r = await sb.from(T).select('id,' + COL).like('id', 'order_%').eq(COL + '->>phone', normPhone(v)).limit(30);
+    if (r.error) throw r.error; found = (r.data || []).map(rowToOrder);
+  } else throw new Error('Enter a valid Order ID (DHXXXXXXXX) or 10-digit phone number');
+  if (!found.length) throw new Error('No order found');
+  found.forEach(function (o) { S.my[o.id] = o; if (S.myIds.indexOf(o.id) < 0) S.myIds.push(o.id); });
+  S.myIds = S.myIds.slice(0, 50); LS.set('dh_my', S.myIds);
+  if (found.length === 1) S.expanded[found[0].id] = true;
+  S.myIds.sort(function (a, b) { return ((S.my[b] && S.my[b].createdAt) || 0) - ((S.my[a] && S.my[a].createdAt) || 0); });
+  renderMyList(); toast(found.length + ' order(s) found');
+};
+async function syncMy() {
+  if (!sb || !S.myIds.length) return;
+  var rows = await dbOrdersByIds(S.myIds), seen = {}, changed = false;
+  rows.forEach(function (o) {
+    seen[o.id] = 1; var old = S.my[o.id];
+    if (old && (stepOf(old) !== stepOf(o) || old.payStatus !== o.payStatus)) toast('Order ' + o.id + ': ' + stepTitle(o));
+    if (JSON.stringify(old) !== JSON.stringify(o)) changed = true;
+    S.my[o.id] = o;
+  });
+  S.myIds.forEach(function (id) { if (!seen[id] && S.my[id] !== null) { S.my[id] = null; changed = true; } });
+  if (changed) renderMyList();
+}
+
+/* ================= HIDDEN LOGIN ================= */
+var taps = 0, tapT, fails = 0, lockUntil = 0;
+$('#logo').addEventListener('click', function () {
+  taps++; clearTimeout(tapT); tapT = setTimeout(function () { taps = 0; }, 2000);
+  if (taps >= 5) { taps = 0; if (S.auth) openDash(); else openPin(); }
+});
+function openPin() {
+  if (!sb) { toast('Store is not connected'); return; }
+  var m = openModal('<div class="mh"><h3 class="serif">Team Login</h3><button class="x" data-act="close" aria-label="Close">✕</button></div>' +
+    '<form class="mb" data-form="pin" autocomplete="off"><label class="fld"><span>Enter your PIN</span><input class="inp" id="pinIn" type="password" inputmode="numeric" maxlength="8" data-input="digits" autocomplete="off"></label>' +
+    '<p class="err" id="pinErr" role="alert"></p><button class="btn block" id="pinBtn" type="submit">Continue</button></form>');
+  S.pinM = m; setTimeout(function () { var i = $('#pinIn'); if (i) i.focus(); }, 120);
+}
+F.pin = async function () {
+  var err = $('#pinErr'), btn = $('#pinBtn'), pin = $('#pinIn').value; err.textContent = '';
+  if (now() < lockUntil) { err.textContent = 'Too many attempts. Wait ' + Math.ceil((lockUntil - now()) / 1000) + 's.'; return; }
+  if (!/^\d{4,8}$/.test(pin)) { err.textContent = 'PIN must be 4 to 8 digits.'; return; }
+  btn.disabled = true;
+  try {
+    var h = await hashPin(pin), main = await ensureMain(), r = roleOf(main, h);
+    if (!r) { fails++; if (fails >= 5) { lockUntil = now() + 30000; fails = 0; } err.textContent = 'Incorrect PIN.'; btn.disabled = false; $('#pinIn').value = ''; return; }
+    fails = 0; S.auth = { role: r.role, hash: h, name: r.name };
+    applyStore(main);
+    if (S.pinM) S.pinM.close();
+    S.orders = []; S.ordSig = '';
+    openDash();
+    dbAllOrders().then(applyAllOrders).catch(function () { });
+  } catch (e) { err.textContent = (e && e.message) || 'Login failed.'; btn.disabled = false; }
+};
+function forceLogout(silent) {
+  var was = !!S.auth;
+  S.auth = null; S.orders = []; S.ordSig = '';
+  if (S.dashM && !S.dashM.closed) S.dashM.close();
+  S.dashM = null;
+  if (was && !silent) toast('Logged out');
+}
+A.logout = function () { forceLogout(); };
+A['dash-close'] = function () { if (S.dashM) S.dashM.close(); };
+
+/* ================= DASHBOARD ================= */
+function isAdmin() { return S.auth && S.auth.role === 'admin'; }
+function openDash() {
+  if (!S.auth) return;
+  if (S.dashM && !S.dashM.closed) return;
+  S.dashTab = 'orders';
+  S.dashM = openModal('', 'full', { sticky: true });
+  renderDash();
+}
+function renderDash() {
+  if (!S.dashM || S.dashM.closed || !S.auth) return;
+  var tabs = [['orders', 'Orders']];
+  if (isAdmin()) tabs.push(['products', 'Products'], ['team', 'Staff PINs'], ['settings', 'Settings']);
+  S.dashM.sheet.innerHTML = '<div class="mh"><div class="row"><h3 class="serif">Dharohar Dashboard</h3><span class="chip dark">' + (isAdmin() ? 'Admin' : 'Staff · ' + esc(S.auth.name)) + '</span></div>' +
+    '<div class="row"><button class="btn ghost sm" data-act="dash-close">Close</button><button class="btn dark sm" data-act="logout">Logout</button></div></div>' +
+    '<div class="dtabs">' + tabs.map(function (t) { return '<button class="' + (S.dashTab === t[0] ? 'on' : '') + '" data-act="dash-tab" data-tab="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div>' +
+    '<div class="mb" id="dashBody"></div>';
+  var b = $('#dashBody', S.dashM.sheet);
+  if (S.dashTab === 'products' && isAdmin()) { b.innerHTML = '<div class="row between" style="margin-bottom:12px"><b>Products</b><button class="btn sm" data-act="prod-new">+ Add product</button></div><div id="prodList"></div>'; renderProdList(); }
+  else if (S.dashTab === 'team' && isAdmin()) { b.innerHTML = teamHTML(); renderStaffList(); }
+  else if (S.dashTab === 'settings' && isAdmin()) { b.innerHTML = settingsHTML(); }
+  else { S.dashTab = 'orders'; b.innerHTML = ordersShellHTML(); refreshOrders(true); }
+}
+A['dash-tab'] = function (el) { S.dashTab = el.dataset.tab; renderDash(); };
+
+/* ----- Orders (admin + staff) ----- */
+function ordersShellHTML() {
+  var fs = [['all', 'All'], ['verify', 'To verify'], ['hold', 'On hold'], ['active', 'In progress'], ['done', 'Delivered']];
+  return '<div class="stats" id="ordStats"></div><div class="filters" id="ordFilters">' + fs.map(function (f) { return '<button class="cat ' + (S.filter === f[0] ? 'on' : '') + '" data-act="ord-filter" data-f="' + f[0] + '">' + f[1] + '</button>'; }).join('') + '</div>' +
+    '<input class="inp" id="ordSearch" data-input="ordq" placeholder="Search by order ID, name or phone" style="margin-bottom:12px" value="' + esc(S.oq) + '"><div id="ordList"></div>';
+}
+I.ordq = function (el) { S.oq = el.value; refreshOrders(true); };
+A['ord-filter'] = function (el) { S.filter = el.dataset.f; $$('#ordFilters .cat').forEach(function (b) { b.classList.toggle('on', b.dataset.f === S.filter); }); refreshOrders(true); };
+function needsVerify(o) { return o.method === 'upi' && o.payStatus === 'pending'; }
+function applyAllOrders(rows) {
+  var sig = JSON.stringify(rows);
+  if (sig === S.ordSig) return;
+  S.ordSig = sig; S.orders = rows; refreshOrders();
+}
+function refreshOrders(force) {
+  if (!S.dashM || S.dashM.closed || S.dashTab !== 'orders') return;
+  var list = $('#ordList', S.dashM.sheet); if (!list) return;
+  var ae = document.activeElement;
+  if (!force && ae && ae.tagName === 'SELECT' && list.contains(ae)) return;
+  var all = S.orders.slice().sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+  var cnt = { verify: 0, hold: 0, active: 0, done: 0 };
+  all.forEach(function (o) { if (needsVerify(o)) cnt.verify++; if (o.payStatus === 'hold') cnt.hold++; if (stepOf(o) < 6) cnt.active++; else cnt.done++; });
+  $('#ordStats', S.dashM.sheet).innerHTML = [['To verify', cnt.verify], ['On hold', cnt.hold], ['In progress', cnt.active], ['Delivered', cnt.done]].map(function (s) { return '<div class="stat"><b>' + s[1] + '</b><span>' + s[0] + '</span></div>'; }).join('');
+  var q = S.oq.trim().toLowerCase();
+  var rows = all.filter(function (o) {
+    if (S.filter === 'verify' && !needsVerify(o)) return false;
+    if (S.filter === 'hold' && o.payStatus !== 'hold') return false;
+    if (S.filter === 'active' && stepOf(o) >= 6) return false;
+    if (S.filter === 'done' && stepOf(o) < 6) return false;
+    return !q || (String(o.id) + ' ' + (o.name || '') + ' ' + (o.phone || '')).toLowerCase().indexOf(q) > -1;
+  });
+  list.innerHTML = rows.length ? rows.map(staffCardHTML).join('') : '<div class="empty" style="padding:40px 10px">No orders to show</div>';
+}
+function staffCardHTML(o) {
+  var st = stepOf(o), upi = o.method === 'upi', pc = payChip(o), id = esc(o.id), act = '';
+  if (upi && o.payStatus !== 'verified') {
+    act += '<button class="btn sm" data-act="verify" data-id="' + id + '">Verify payment</button>';
+    if (o.payStatus !== 'hold') act += '<button class="btn ghost sm" data-act="hold" data-id="' + id + '">Put on hold</button>';
+  }
+  if (!upi && st === 1) act += '<button class="btn sm" data-act="accept" data-id="' + id + '">Accept order</button>';
+  var canStep = upi ? o.payStatus === 'verified' : st >= 2;
+  if (canStep && st < 6) act += '<button class="btn sm" data-act="next" data-id="' + id + '">Mark: ' + esc(STEP_T[st + 1]) + ' →</button>';
+  if (canStep) {
+    var opts = ''; for (var i = 1; i <= 6; i++) opts += '<option value="' + i + '"' + (i === st ? ' selected' : '') + '>' + i + '. ' + esc(STEP_T[i]) + '</option>';
+    act += '<select class="inp sm" data-change="setstep" data-id="' + id + '" aria-label="Set order status">' + opts + '</select>';
+  }
+  var last = (o.log || []).slice(-1)[0];
+  return '<div class="oc"><div class="oc-h"><div><b>' + id + '</b><div class="muted">' + fmtDate(o.createdAt) + ' · ' + inr(o.total) + ' · ' + (upi ? 'UPI' : 'COD') + '</div></div><span class="chip ' + pc[1] + '">' + esc(pc[0]) + '</span></div>' +
+    '<div class="oc-cust"><b>' + esc(o.name) + '</b> · <a href="tel:' + esc(o.phone) + '">' + esc(o.phone) + '</a><br>' + esc(o.address) + '</div>' +
+    '<ul class="items">' + (o.items || []).map(function (i) { return '<li><span>' + esc(i.name) + ' × ' + esc(i.qty) + '</span><span>' + inr(i.price * i.qty) + '</span></li>'; }).join('') + '</ul>' +
+    (upi ? '<div class="row" style="margin:6px 0">UTR <span class="utr">' + esc(o.utr) + '</span><button class="lnk" data-act="copy" data-copy="' + esc(o.utr) + '">Copy</button></div>' : '') +
+    (o.note && o.payStatus === 'hold' ? '<p class="muted">Hold reason: ' + esc(o.note) + '</p>' : '') +
+    progressHTML(o) + '<div class="oc-cur">' + esc(stepTitle(o)) + '</div>' +
+    (last ? '<div class="muted">Last update: ' + esc(last.s) + (last.by ? ' · ' + esc(last.by) : '') + ' · ' + fmtDate(last.t) + '</div>' : '') +
+    '<div class="oc-act">' + act + '</div></div>';
+}
+function mergeOrder(o) {
+  var i = -1; S.orders.forEach(function (x, k) { if (x.id === o.id) i = k; });
+  if (i > -1) S.orders[i] = o; else S.orders.push(o);
+  S.ordSig = JSON.stringify(S.orders);
+}
+async function orderAction(el, fn) {
+  var id = el.dataset.id; if (S.busyIds[id]) return;
+  S.busyIds[id] = 1; el.disabled = true;
+  try { var o = await updateOrder(id, fn); mergeOrder(o); toast('Updated'); }
+  catch (e) { toast((e && e.message) || 'Update failed'); }
+  finally { delete S.busyIds[id]; refreshOrders(true); }
+}
+A.verify = function (el) {
+  return orderAction(el, function (o) {
+    if (o.method !== 'upi') throw new Error('Not a UPI order');
+    if (!/^\d{12}$/.test(o.utr || '')) throw new Error('Order has no valid UTR');
+    o.payStatus = 'verified'; o.note = ''; o.step = Math.max(stepOf(o), 2); addLog(o, 'Payment verified');
+  });
+};
+A.hold = async function (el) {
+  var reason = await dialog({ title: 'Put payment on hold', msg: 'Optional: tell the customer what the issue is.', input: true, placeholder: 'e.g. UTR not found, amount mismatch', ok: 'Put on hold' });
+  if (reason === null) return;
+  return orderAction(el, function (o) {
+    if (o.method !== 'upi') throw new Error('Not a UPI order');
+    o.payStatus = 'hold'; o.note = reason; o.step = 1; addLog(o, 'Payment put on hold');
+  });
+};
+A.accept = function (el) { return orderAction(el, function (o) { if (o.method !== 'cod') throw new Error('Not a COD order'); o.step = Math.max(stepOf(o), 2); addLog(o, 'Order accepted'); }); };
+function setStepFn(n) {
+  return function (o) {
+    if (n < 1 || n > 6) throw new Error('Invalid step');
+    if (o.method === 'upi' && n >= 2 && o.payStatus !== 'verified') throw new Error('Verify the payment first');
+    if (n >= 2 && o.payStatus === 'hold') throw new Error('Payment is on hold');
+    if (o.method === 'cod') o.payStatus = n === 6 ? 'cod_paid' : 'cod';
+    o.step = n; addLog(o, STEP_T[n]);
+  };
+}
+A.next = function (el) {
+  var o = S.orders.filter(function (x) { return x.id === el.dataset.id; })[0]; if (!o) return;
+  return orderAction(el, function (cur) { setStepFn(Math.min(6, stepOf(cur) + 1))(cur); });
+};
+C.setstep = function (el) { var n = parseInt(el.value, 10); return orderAction(el, setStepFn(n)); };
+
+/* ----- Products (admin) ----- */
+function renderProdList() {
+  var l = $('#prodList', S.dashM && S.dashM.sheet); if (!l) return;
+  l.innerHTML = prods().length ? prods().map(function (p) {
+    return '<div class="pr"><img src="' + imgSrc(p) + '" alt=""><div class="pi"><b>' + esc(p.name) + '</b><span class="muted">' + esc(p.cat) + ' · ' + inr(priceOf(p)) + '</span> ' + (p.inStock === false ? '<span class="chip line">Sold out</span>' : '') + '</div>' +
+      '<button class="btn ghost sm" data-act="prod-edit" data-id="' + esc(p.id) + '">Edit</button><button class="btn dark sm" data-act="prod-del" data-id="' + esc(p.id) + '">Delete</button></div>';
+  }).join('') : '<div class="empty" style="padding:30px">No products yet</div>';
+}
+function prodFormHTML(p) {
+  p = p || { id: '', name: '', price: '', cat: PROD_CATS[0], desc: '', img: '', inStock: true };
+  return '<div class="mh"><h3 class="serif">' + (p.id ? 'Edit product' : 'Add product') + '</h3><button class="x" data-act="close" aria-label="Close">✕</button></div>' +
+    '<form class="mb" data-form="prod"><input type="hidden" name="id" value="' + esc(p.id) + '">' +
+    '<label class="fld"><span>Name</span><input class="inp" name="name" maxlength="80" value="' + esc(p.name) + '"></label>' +
+    '<label class="fld"><span>Price (₹)</span><input class="inp" name="price" inputmode="decimal" maxlength="9" value="' + esc(p.price) + '"></label>' +
+    '<label class="fld"><span>Category</span><select class="inp" name="cat">' + PROD_CATS.map(function (c) { return '<option' + (c === p.cat ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('') + '</select></label>' +
+    '<label class="fld"><span>Description</span><textarea class="inp" name="desc" rows="3" maxlength="400">' + esc(p.desc) + '</textarea></label>' +
+    '<div class="fld"><span>Photo (auto-compressed)</span><div class="row"><img class="pe-img" id="peImg" src="' + imgSrc(p) + '" alt=""><div><input type="file" accept="image/*" data-change="pimg"><br><button type="button" class="lnk" data-act="pimg-clear">Remove photo</button></div></div></div>' +
+    '<label class="chk"><input type="checkbox" name="inStock"' + (p.inStock !== false ? ' checked' : '') + '> In stock</label>' +
+    '<p class="err" id="peErr" role="alert"></p><button class="btn block" id="peBtn" type="submit">Save product</button></form>';
+}
+A['prod-new'] = function () { S.editImg = ''; openModal(prodFormHTML()); };
+A['prod-edit'] = function (el) { var p = getP(el.dataset.id); if (!p) return; S.editImg = p.img || ''; openModal(prodFormHTML(p)); };
+C.pimg = async function (el) {
+  var f = el.files && el.files[0]; if (!f) return;
+  S.editImg = await compressImage(f); $('#peImg').src = S.editImg; toast('Photo ready (' + Math.round(S.editImg.length / 1024) + ' KB)');
+};
+A['pimg-clear'] = function () { S.editImg = ''; var p = { cat: ($('[name=cat]') || {}).value }; $('#peImg').src = placeholder(p.cat); };
+F.prod = async function (form) {
+  var fd = new FormData(form), err = $('#peErr'), btn = $('#peBtn'); err.textContent = '';
+  var id = String(fd.get('id') || ''), name = String(fd.get('name') || '').trim(), price = Math.round(parseFloat(fd.get('price')) * 100) / 100,
+    cat = String(fd.get('cat')), desc = String(fd.get('desc') || '').trim(), stock = fd.get('inStock') === 'on';
+  if (name.length < 2) { err.textContent = 'Enter a product name.'; return; }
+  if (!isFinite(price) || price <= 0 || price > 1000000) { err.textContent = 'Enter a valid price.'; return; }
+  if (PROD_CATS.indexOf(cat) < 0) { err.textContent = 'Choose a category.'; return; }
+  btn.disabled = true;
+  try {
+    var item = { id: id || uid('p'), name: name, price: price, cat: cat, desc: desc, img: S.editImg || '', inStock: stock };
+    await mutateMain(function (d) { d.products = d.products || []; var i = -1; d.products.forEach(function (x, k) { if (x.id === item.id) i = k; }); if (i > -1) d.products[i] = item; else d.products.push(item); }, 'admin');
+    A.close(form); toast('Product saved'); renderProdList();
+  } catch (e) { err.textContent = (e && e.message) || 'Could not save'; btn.disabled = false; }
+};
+A['prod-del'] = async function (el) {
+  var p = getP(el.dataset.id); if (!p) return;
+  var ok = await dialog({ title: 'Delete product?', msg: p.name + ' will be removed for all customers.', ok: 'Delete', danger: true });
+  if (!ok) return;
+  await mutateMain(function (d) { d.products = (d.products || []).filter(function (x) { return x.id !== p.id; }); }, 'admin');
+  toast('Product deleted'); renderProdList();
+};
+
+/* ----- Staff PINs & settings (admin only) ----- */
+function teamHTML() {
+  return '<div class="grid2"><div class="panel"><h4 class="sec" style="margin-top:0">Add staff PIN</h4><form data-form="staff" autocomplete="off">' +
+    '<label class="fld"><span>Staff name</span><input class="inp" name="name" maxlength="30"></label>' +
+    '<label class="fld"><span>PIN (4 to 8 digits)</span><input class="inp" name="pin" inputmode="numeric" maxlength="8" data-input="digits" autocomplete="off"></label>' +
+    '<p class="err" id="stErr"></p><button class="btn" type="submit">Add staff</button></form></div>' +
+    '<div class="panel"><h4 class="sec" style="margin-top:0">Current staff</h4><div id="staffList"></div></div></div>';
+}
+function renderStaffList() {
+  var l = $('#staffList', S.dashM && S.dashM.sheet); if (!l) return;
+  var st = (S.store && S.store.staff) || [];
+  l.innerHTML = st.length ? st.map(function (s) { return '<div class="row between" style="padding:8px 0;border-bottom:1px solid var(--line)"><span>' + esc(s.name) + '</span><button class="btn dark sm" data-act="staff-del" data-id="' + esc(s.id) + '">Remove</button></div>'; }).join('') : '<p class="muted">No staff PINs yet.</p>';
+}
+F.staff = async function (form) {
+  var fd = new FormData(form), err = $('#stErr'), name = String(fd.get('name') || '').trim(), pin = String(fd.get('pin') || ''); err.textContent = '';
+  if (name.length < 2) { err.textContent = 'Enter a name.'; return; }
+  if (!/^\d{4,8}$/.test(pin)) { err.textContent = 'PIN must be 4 to 8 digits.'; return; }
+  var h = await hashPin(pin);
+  try {
+    await mutateMain(function (d) {
+      d.staff = d.staff || [];
+      if (d.staff.length >= 20) throw new Error('Maximum 20 staff PINs.');
+      if (d.adminHash === h || d.staff.some(function (s) { return s.hash === h; })) throw new Error('This PIN is already in use. Choose another.');
+      d.staff.push({ id: uid('st'), name: name, hash: h, at: now() });
+    }, 'admin');
+    form.reset(); toast('Staff added'); renderStaffList();
+  } catch (e) { err.textContent = e.message; }
+};
+A['staff-del'] = async function (el) {
+  var ok = await dialog({ title: 'Remove staff PIN?', msg: 'This person will be logged out immediately.', ok: 'Remove', danger: true });
+  if (!ok) return;
+  await mutateMain(function (d) { d.staff = (d.staff || []).filter(function (s) { return s.id !== el.dataset.id; }); }, 'admin');
+  toast('Staff removed'); renderStaffList();
+};
+function settingsHTML() {
+  var s = (S.store && S.store.settings) || DEFAULT_UPI;
+  return '<div class="grid2"><div class="panel"><h4 class="sec" style="margin-top:0">Payment settings</h4><form data-form="paysettings">' +
+    '<label class="fld"><span>UPI ID</span><input class="inp" name="upi" maxlength="60" value="' + esc(s.upiId) + '"></label>' +
+    '<label class="fld"><span>Payee name</span><input class="inp" name="payee" maxlength="40" value="' + esc(s.payee) + '"></label>' +
+    '<p class="err" id="psErr"></p><button class="btn" type="submit">Save payment settings</button></form></div>' +
+    '<div class="panel"><h4 class="sec" style="margin-top:0">Change Admin PIN</h4><form data-form="adminpin" autocomplete="off">' +
+    '<label class="fld"><span>Current PIN</span><input class="inp" type="password" name="cur" inputmode="numeric" maxlength="8" data-input="digits"></label>' +
+    '<label class="fld"><span>New PIN (4 to 8 digits)</span><input class="inp" type="password" name="n1" inputmode="numeric" maxlength="8" data-input="digits"></label>' +
+    '<label class="fld"><span>Confirm new PIN</span><input class="inp" type="password" name="n2" inputmode="numeric" maxlength="8" data-input="digits"></label>' +
+    '<p class="err" id="apErr"></p><button class="btn" type="submit">Change PIN</button></form></div></div>';
+}
+F.paysettings = async function (form) {
+  var fd = new FormData(form), err = $('#psErr'), upi = String(fd.get('upi') || '').trim(), payee = String(fd.get('payee') || '').trim(); err.textContent = '';
+  if (!/^[A-Za-z0-9._-]{2,}@[A-Za-z]{2,}$/.test(upi)) { err.textContent = 'Enter a valid UPI ID (name@bank).'; return; }
+  if (payee.length < 2) { err.textContent = 'Enter the payee name.'; return; }
+  try { await mutateMain(function (d) { d.settings = { upiId: upi, payee: payee }; }, 'admin'); toast('Payment settings saved'); } catch (e) { err.textContent = e.message; }
+};
+F.adminpin = async function (form) {
+  var fd = new FormData(form), err = $('#apErr'), cur = String(fd.get('cur')), n1 = String(fd.get('n1')), n2 = String(fd.get('n2')); err.textContent = '';
+  if (!/^\d{4,8}$/.test(n1)) { err.textContent = 'New PIN must be 4 to 8 digits.'; return; }
+  if (n1 !== n2) { err.textContent = 'New PINs do not match.'; return; }
+  if (await hashPin(cur) !== S.auth.hash) { err.textContent = 'Current PIN is incorrect.'; return; }
+  var nh = await hashPin(n1);
+  try {
+    await mutateMain(function (d) { if ((d.staff || []).some(function (s) { return s.hash === nh; })) throw new Error('This PIN is already used by a staff member.'); d.adminHash = nh; }, 'admin');
+    S.auth.hash = nh; form.reset(); toast('Admin PIN changed');
+  } catch (e) { err.textContent = e.message; }
+};
+
+/* ================= STORE SYNC ================= */
+function applyStore(main) {
+  var sig = JSON.stringify(main);
+  if (S.store && sig === S.storeSig) return false;
+  S.storeSig = sig; S.store = main; S.loadErr = '';
+  pruneCart(); renderGrid(); updateBadge(); renderBag(); refreshPM(); refreshCheckout();
+  if (S.dashM && !S.dashM.closed) { if (S.dashTab === 'products') renderProdList(); else if (S.dashTab === 'team') renderStaffList(); }
+  return true;
+}
+async function sync() {
+  if (!sb || S.syncing) return;
+  S.syncing = true;
+  try {
+    var main = await dbGetMain();
+    if (!main || !Array.isArray(main.products) || !main.adminHash) main = await ensureMain();
+    S.fails = 0; setBanner('');
+    applyStore(main);
+    if (S.auth) {
+      var r = roleOf(main, S.auth.hash);
+      if (!r) { forceLogout(true); toast('Session ended. PIN was changed or removed.'); }
+      else { var changed = r.role !== S.auth.role; S.auth.role = r.role; S.auth.name = r.name; if (changed) renderDash(); }
+    }
+    if (S.auth) applyAllOrders(await dbAllOrders());
+    if (S.myIds.length) await syncMy();
+  } catch (e) {
+    S.fails++;
+    if (!S.store) { S.loadErr = 'Could not load the store. Check your connection.'; renderGrid(); }
+    else if (S.fails >= 2) setBanner('Connection problem. Retrying…');
+  } finally { S.syncing = false; }
+}
+
+/* ================= INIT ================= */
+function init() {
+  updateBadge(); renderGrid();
+  $('#search').addEventListener('input', function (e) { S.q = e.target.value; renderGrid(); });
+  if (!sb) {
+    S.loadErr = cfgOk ? 'Could not connect to the store service.' : 'Store is not configured yet.';
+    if (!cfgOk) setBanner('Setup needed: put your real Supabase project URL in CFG.URL (index.html).');
+    renderGrid(); return;
+  }
+  sync();
+  setInterval(function () { if (!document.hidden) sync(); }, POLL_MS);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
+  window.addEventListener('online', sync);
+}
+init();
+})();
+</script>
+</body>
+</html>
