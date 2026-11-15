@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.dharohar_official.twa",
+      "sha256_cert_fingerprints": [
+        "14:F0:19:B6:CB:AE:9B:71:A0:84:30:9E:CD:56:C0:B4:D2:E8:01:37:DF:B0:05:C1:5A:A5:E3:DB:E5:B4:97:C3"
+      ]
+    }
+  }
+]
