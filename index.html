@@ -703,6 +703,7 @@ function staffCardHTML(o) {
     if (canStep && st < 6) act += '<button class="btn sm" data-act="next" data-id="' + id + '">Next: ' + esc(STEP_T[st + 1]) + ' →</button>';
     act += '<button class="btn ghost sm" data-act="ext-date" data-id="' + id + '">📅 Change/Extend Date</button>';
     if (st < 6) act += '<button class="btn dark sm" data-act="admin-cancel" data-id="' + id + '">Cancel Order</button>';
+    if (isAdmin()) act += '<button class="btn dark sm" style="background:#8B1E1E" data-act="admin-del-ord" data-id="' + id + '">🗑️ Delete</button>';
   }
   return '<div class="oc"><div class="oc-h"><div><b>' + id + '</b><div class="muted">' + fmtDate(o.createdAt) + ' · ' + inr(o.total) + ' · ' + esc(o.method.toUpperCase()) + '</div></div><span class="chip ' + pc + '">' + esc(pc) + '</span></div>' +
     '<div class="muted" style="font-size:.82rem;margin-bottom:6px">📅 Delivery: <b>' + esc(fmtDay(o.expectedDate)) + '</b> (' + esc(o.deliveryLabel || 'Standard') + ')' + (o.delNote ? ' · Note: ' + esc(o.delNote) + ')' : '') + '</div>' +
@@ -732,6 +733,12 @@ A['ext-date'] = async function (el) {
   if (!nd) return;
   var note = await dialog({ title: 'Optional Reason', msg: 'e.g. Extended by +3 days due to festival rush', input: true, placeholder: 'Optional note for customer', ok: 'Save' });
   return runOrderUpdate(el.dataset.id, function (cur) { cur.expectedDate = nd; cur.delNote = note || 'Updated by team'; addLog(cur, 'Delivery date updated to ' + nd); });
+};A['admin-del-ord'] = async function (el) {
+  var id = el.dataset.id;
+  if (!(await dialog({ title: 'Delete Order ' + id + '?', msg: 'Delete permanently to save storage?', ok: 'Delete', danger: true }))) return;
+  await dbAdminAction('delete_order', id, {});
+  S.orders = (S.orders || []).filter(function (x) { return x.id !== id; });
+  refreshOrders(true); toast('Order deleted');
 };
 A['admin-cancel'] = async function (el) {
   var r = await dialog({ title: 'Cancel Order?', msg: 'Enter cancellation reason:', input: true, placeholder: 'e.g. Out of stock / Customer requested', ok: 'Cancel Order', danger: true });
