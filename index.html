@@ -653,7 +653,8 @@ function renderDash() {
   if (isAdmin()) tabs.push(['products', 'Products'], ['team', 'Staff PINs'], ['settings', 'Settings & Payments']);
   S.dashM.sheet.innerHTML = '<div class="mh"><div class="row"><h3 class="serif">Dharohar Control</h3><span class="chip dark">' + (isAdmin() ? 'Admin' : 'Staff · ' + esc(S.auth.name)) + '</span></div>' +
     '<div class="row"><button class="btn ghost sm" data-act="dash-close">Close</button><button class="btn dark sm" data-act="logout">Logout</button></div></div>' +
-    '<div class="dtabs">' +tabs.map(function (t) { return '<button class="' + (S.dashTab === t ? 'on' : '') + '" data-act="dash-tab" data-tab="' + t + '">' + t + '</button>'; }).join('') + '</div>' +
+        '<div class="dtabs">' + tabs.map(function (t) { return '<button class="' + (S.dashTab === t[0] ? 'on' : '') + '" data-act="dash-tab" data-tab="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div>' +
+
     '<div class="mb" id="dashBody"></div>';
   var b = $('#dashBody', S.dashM.sheet);
   if (S.dashTab === 'products' && isAdmin()) { b.innerHTML = '<div class="row between" style="margin-bottom:12px"><b>Products</b><button class="btn sm" data-act="prod-new">+ Add Product</button></div><div id="prodList"></div>'; renderProdList(); }
