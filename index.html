@@ -653,7 +653,7 @@ function renderDash() {
   if (isAdmin()) tabs.push(['products', 'Products'], ['team', 'Staff PINs'], ['settings', 'Settings & Payments']);
   S.dashM.sheet.innerHTML = '<div class="mh"><div class="row"><h3 class="serif">Dharohar Control</h3><span class="chip dark">' + (isAdmin() ? 'Admin' : 'Staff · ' + esc(S.auth.name)) + '</span></div>' +
     '<div class="row"><button class="btn ghost sm" data-act="dash-close">Close</button><button class="btn dark sm" data-act="logout">Logout</button></div></div>' +
-    '<div class="dtabs">' + tabs.map(function (t) { return '<button class="' + (S.dashTab === t ? 'on' : '') + '" data-act="dash-tab" data-tab="' + t + '">' + t + '</button>'; }).join('') + '</div>' +
+    '<div class="dtabs">' +tabs.map(function (t) { return '<button class="' + (S.dashTab === t ? 'on' : '') + '" data-act="dash-tab" data-tab="' + t + '">' + t + '</button>'; }).join('') + '</div>' +
     '<div class="mb" id="dashBody"></div>';
   var b = $('#dashBody', S.dashM.sheet);
   if (S.dashTab === 'products' && isAdmin()) { b.innerHTML = '<div class="row between" style="margin-bottom:12px"><b>Products</b><button class="btn sm" data-act="prod-new">+ Add Product</button></div><div id="prodList"></div>'; renderProdList(); }
@@ -665,7 +665,7 @@ A['dash-tab'] = function (el) { S.dashTab = el.dataset.tab; renderDash(); };
 
 function ordersShellHTML() {
   var fs = [['all', 'All'], ['verify', 'To Verify'], ['active', 'In Progress'], ['done', 'Delivered'], ['cancelled', 'Cancelled']];
-  return '<div class="stats" id="ordStats"></div><div class="filters" id="ordFilters">' + fs.map(function (f) { return '<button class="cat ' + (S.filter === f ? 'on' : '') + '" data-act="ord-filter" data-f="' + f + '">' + f + '</button>'; }).join('') + '</div>' +
+  return '<div class="stats" id="ordStats"></div><div class="filters" id="ordFilters">' + fs.map(function (f) { return '<button class="cat ' + (S.filter === f[0] ? 'on' : '') + '" data-act="ord-filter" data-f="' + f[0] + '">' + f[1] + '</button>'; }).join('') + '</div>' +
     '<input class="inp" id="ordSearch" data-input="ordq" placeholder="Search Order ID, name or phone" style="margin-bottom:12px" value="' + esc(S.oq) + '"><div id="ordList"></div>';
 }
 I.ordq = function (el) { S.oq = el.value; refreshOrders(true); };
@@ -679,7 +679,7 @@ function refreshOrders() {
     if (o.status === 'cancelled') cnt.cancelled++;
     else { if (o.payStatus === 'pending') cnt.verify++; if (stepOf(o) < 6) cnt.active++; else cnt.done++; }
   });
-  $('#ordStats', S.dashM.sheet).innerHTML = [['To Verify', cnt.verify], ['Active', cnt.active], ['Delivered', cnt.done], ['Cancelled', cnt.cancelled]].map(function (s) { return '<div class="stat"><b>' + s + '</b><span>' + s + '</span></div>'; }).join('');
+  $('#ordStats', S.dashM.sheet).innerHTML = [['To Verify', cnt.verify], ['Active', cnt.active], ['Delivered', cnt.done], ['Cancelled', cnt.cancelled]].map(function (s) { return '<div class="stat"><b>' + s[1] + '</b><span>' + s[0] + '</span></div>'; }).join('');
   var q = S.oq.trim().toLowerCase();
   var rows = all.filter(function (o) {
     if (S.filter === 'cancelled' && o.status !== 'cancelled') return false;
