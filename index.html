@@ -907,6 +907,7 @@ $('#search').addEventListener('input', function (e) { S.q = e.target.value; rend
 sync();
 setInterval(function () { if (!document.hidden) sync(); }, POLL_MS);
 document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 })();
 </script>
 </body>
